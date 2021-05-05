@@ -1,6 +1,6 @@
 Name: Rahul Gautham Putcha
 NJIT-ID: 31524074
-
+# Programming Assignment 2: Wine Quality Predictor on AWS using Spark Hadoop
 ## Installation steps
 <ul>
 <li>NOTE-1: Training is conducted Manual way, using AWS EMR(Elastic Map Reduce setup).</li>
@@ -92,10 +92,10 @@ This end the Training phase and we are provided with a sample model stored insid
 To carry out the testing
 Steps:
 1. Start an EC2 Instance of any custom configuration. Specific changes related to Security Groups are as follow:\
-   HTTP   TCP  80	   <<MyIP>>\	
-   Custom TCP  8080  <<MyIP>>\
-   SSH    TCP  22	   <<MyIP>>\
-   Custom TCP	7077  <<MyIP>>\
+   HTTP   TCP   80	{MyIP}\	
+   Custom TCP   8080    {MyIP}\
+   SSH    TCP   22	{MyIP}\
+   Custom TCP	7077    {MyIP}\
 2. We can perform the setup of this phase in one of two ways given below:\
    i. Without Docker:\
       $ sh ./run_common1.sh # To install Apache Spark/ Java/ Scala and envs\
@@ -120,6 +120,6 @@ Steps:
       - NOTE: TestingFilenameLocation.csv can be fetched from s3 bucket using location as, s3n://pr-mllib/TestingFilenameLocation.csv
    
    
-------------------------------------------------------------------------
-                                 Happy using
-------------------------------------------------------------------------
+
+#                                 Happy using
+
