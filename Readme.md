@@ -45,38 +45,38 @@ Pre-Steps:
 1. In the `Cluster` page and under `Security and access`, click on the `Security groups for Master`: `(..random Id...)`
 2. In the security group page select select security group belonging to `EMR-master`
 3. Click on `Edit inbound rules`
-4. Click on `Add rules`
-   i. Add SSH type and select source as `My IP`
-   This will give ssh access solely to your local machine
+4. Click on `Add rules`\
+   i. Add SSH type and select source as `My IP`\
+   This will give ssh access solely to your local machine\
 5. click `Save rules`
 
 ### IV. Install Maven inside EMR (IMPORTANT AND USEFUL FOR Single machine prediction application)
 Execute following steps to install maven and setup project files
 
-\# Linux-step by step setup for Apache Maven
-$ cd ~
-$ wget https://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-$ tar xvf apache-maven-3.6.3-bin.tar.gz
-$ sudo mv apache-maven-3.6.3  /usr/local/apache-maven
-$ export M2_HOME=/usr/local/apache-maven
-$ export M2=$M2_HOME/bin 
-$ export PATH=$M2:$PATH
+\# Linux-step by step setup for Apache Maven\
+$ cd ~\
+$ wget https://mirrors.ocf.berkeley.edu/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz\
+$ tar xvf apache-maven-3.6.3-bin.tar.gz\
+$ sudo mv apache-maven-3.6.3  /usr/local/apache-maven\
+$ export M2_HOME=/usr/local/apache-maven\
+$ export M2=$M2_HOME/bin\
+$ export PATH=$M2:$PATH\
 $ mvn -version
 
 ### V. Project Setup
 $ mvn archetype:generate -DgroupId=rp39 -DartifactId=app-pr2 -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 
-Now we have to download WineQualityTraining.java and WineQualityTesting.java to app-pr2/src/main/java/rp39/
-And download pom.xml file to app-pr2/, hence replace the old pom.xml file with the new one.
-# After the setup, in the directory where the pom.xml resides, execute following commands:
-$ mvn package 
+Now we have to download WineQualityTraining.java and WineQualityTesting.java to app-pr2/src/main/java/rp39/\
+And download pom.xml file to app-pr2/, hence replace the old pom.xml file with the new one.\
+# After the setup, in the directory where the pom.xml resides, execute following commands:\
+$ mvn package
 
 ### VI. Training Execution
-\# If all is good, execute the following
-$ spark-submit --class rp39.WineQualityTraining target/app-pr2-1.0-SNAPSHOT.jar s3n://pr2-mllib/TrainingDataset.csv s3n://pr2-mllib/TestingDataset.csv
-\# NOTE: Do change the TrainingDataset and TestingDataset in accordance to the `bucket-name`
-\# NOTE: by default, a saved sample model is sent to, s3n://pr2-mllib/ , as s3n://pr2-mllib/sample-model
-We can change this configuration by using an optional argument,
+\# If all is good, execute the following\
+$ spark-submit --class rp39.WineQualityTraining target/app-pr2-1.0-SNAPSHOT.jar s3n://pr2-mllib/TrainingDataset.csv s3n://pr2-mllib/TestingDataset.csv\
+\# NOTE: Do change the TrainingDataset and TestingDataset in accordance to the `bucket-name`\
+\# NOTE: by default, a saved sample model is sent to, s3n://pr2-mllib/ , as s3n://pr2-mllib/sample-model\
+We can change this configuration by using an optional argument,\
 $ spark-submit --class rp39.WineQualityTraining target/app-pr2-1.0-SNAPSHOT.jar \
 s3n://pr2-mllib/TrainingDataset.csv \
 s3n://pr2-mllib/TestingDataset.csv \
@@ -91,32 +91,32 @@ This end the Training phase and we are provided with a sample model stored insid
 
 To carry out the testing
 Steps:
-1. Start an EC2 Instance of any custom configuration. Specific changes related to Security Groups are as follow:
-   HTTP   TCP  80	   <<MyIP>>	
-   Custom TCP  8080  <<MyIP>>
-   SSH    TCP  22	   <<MyIP>>
-   Custom TCP	7077  <<MyIP>>
-2. We can perform the setup of this phase in one of two ways given below:
-   i. Without Docker:
-      $ sh ./run_common1.sh # To install Apache Spark/ Java/ Scala and envs
-      $ source ~/.bash_profile
-      $ sh ./run_common2.sh # To setup Apache Spark and Maven
-      Then follow the section on `IV. Install Maven inside EMR` and `V. Project Setup`, this time we are setting our project for testing on a 
-      seperate EC2 instance. After setting up `Maven` and project, we now execute the WineQualityTesting.java
+1. Start an EC2 Instance of any custom configuration. Specific changes related to Security Groups are as follow:\
+   HTTP   TCP  80	   <<MyIP>>\	
+   Custom TCP  8080  <<MyIP>>\
+   SSH    TCP  22	   <<MyIP>>\
+   Custom TCP	7077  <<MyIP>>\
+2. We can perform the setup of this phase in one of two ways given below:\
+   i. Without Docker:\
+      $ sh ./run_common1.sh # To install Apache Spark/ Java/ Scala and envs\
+      $ source ~/.bash_profile\
+      $ sh ./run_common2.sh # To setup Apache Spark and Maven\
+      Then follow the section on `IV. Install Maven inside EMR` and `V. Project Setup`, this time we are setting our project for testing on a\
+      seperate EC2 instance. After setting up `Maven` and project, we now execute the WineQualityTesting.java\
       
-      $ spark-submit --class rp39.WineQualityTesting target/app-pr2-1.0-SNAPSHOT.jar s3n://pr2-mllib/TestDataset.csv
-      \# NOTE: Do change the TrainingDataset and TestingDataset in accordance to the `bucket-name`
-      \# NOTE: by default, the sample model is loaded from, s3n://pr2-mllib/ , as s3n://pr2-mllib/sample-model
-      We can change this configuration by using the optional argument as below,
+      $ spark-submit --class rp39.WineQualityTesting target/app-pr2-1.0-SNAPSHOT.jar s3n://pr2-mllib/TestDataset.csv\
+      \# NOTE: Do change the TrainingDataset and TestingDataset in accordance to the `bucket-name\
+      \# NOTE: by default, the sample model is loaded from, s3n://pr2-mllib/ , as s3n://pr2-mllib/sample-model\
+      We can change this configuration by using the optional argument as below,\
       $ spark-submit --class rp39.WineQualityTesting target/app-pr2-1.0-SNAPSHOT.jar \
       s3n://pr2-mllib/TestDataset.csv \
       s3n://bucket-name/output-model-name
       
-   ii. With using Docker:
-   1. Get the docker image from docker hub (Auto-run included)
-   $ docker push rahulgputcha/wine-quality-predictor
-   To execute docker image or to create a docker container
-   2. docker run rahulgputcha/wine-quality-predictor TestingFilenameLocation.csv {save_model_path}
+   ii. With using Docker:\
+   1. Get the docker image from docker hub (Auto-run included)\
+   $ docker push rahulgputcha/wine-quality-predictor\
+   To execute docker image or to create a docker container\
+   2. docker run rahulgputcha/wine-quality-predictor TestingFilenameLocation.csv {save_model_path}\
       - NOTE: TestingFilenameLocation.csv can be fetched from s3 bucket using location as, s3n://pr-mllib/TestingFilenameLocation.csv
    
    
