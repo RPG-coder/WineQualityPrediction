@@ -1,7 +1,7 @@
 # WineQualityPrediction
 Wine Quality Prediction; a setup using Apache Spark MLlib; Provided instruction to setup manually or using Docker Image
 
-Name: Rahul Gautham Putcha
+Name: Rahul Gautham Putcha\
 NJIT-ID: 31524074
 # Programming Assignment 2: Wine Quality Predictor on AWS using Spark Hadoop
 ## Installation steps
