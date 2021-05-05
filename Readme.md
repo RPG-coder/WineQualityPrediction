@@ -81,11 +81,12 @@ s3n://bucket-name/output-model-name
 
 This end the Training phase and we are provided with a sample model stored inside the S3 bucket
 
-------- Training only (END)---------------
+------- Training only (END)---------------\
 
 
-------- Testing only (START)---------------
-To carry the testing
+------- Testing only (START)---------------\
+
+To carry out the testing
 Steps:
 1. Start an EC2 Instance of any custom configuration. Specific changes related to Security Groups are as follow:
    HTTP   TCP  80	   <<MyIP>>	
@@ -93,7 +94,7 @@ Steps:
    SSH    TCP  22	   <<MyIP>>
    Custom TCP	7077  <<MyIP>>
 2. We can perform the setup of this phase in one of two ways given below:
-   i. Without Docker
+   i. Without Docker:
       $ sh ./run_common1.sh # To install Apache Spark/ Java/ Scala and envs
       $ source ~/.bash_profile
       $ sh ./run_common2.sh # To setup Apache Spark and Maven
@@ -109,7 +110,6 @@ Steps:
       s3n://bucket-name/output-model-name
       
    ii. With using Docker:
-   ----------------------
    1. Get the docker image from docker hub (Auto-run included)
    $ docker push rahulgputcha/wine-quality-predictor
    To execute docker image or to create a docker container
