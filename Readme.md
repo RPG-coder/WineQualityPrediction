@@ -68,7 +68,7 @@ $ mvn archetype:generate -DgroupId=rp39 -DartifactId=app-pr2 -DarchetypeArtifact
 
 Now we have to download WineQualityTraining.java and WineQualityTesting.java to app-pr2/src/main/java/rp39/\
 And download pom.xml file to app-pr2/, hence replace the old pom.xml file with the new one.\
-# After the setup, in the directory where the pom.xml resides, execute following commands:\
+\# After the setup, in the directory where the pom.xml resides, execute following commands:\
 $ mvn package
 
 ### VI. Training Execution
