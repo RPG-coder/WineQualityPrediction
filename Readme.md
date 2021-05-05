@@ -2,26 +2,29 @@ Name: Rahul Gautham Putcha
 NJIT-ID: 31524074
 
 ## Installation steps
-
-NOTE-1: Training is conducted Manual way, using AWS EMR(Elastic Map Reduce setup).\
-NOTE-2: Testing can be done either without (Manual way) or with using Docker.\
-NOTE-3: Project files are hosted at Github, https://github.com/RPG-coder/WineQualityPrediction\
-NOTE-4: Docker files are hosted at DockerHub, https://hub.docker.com/repository/docker/rahulgputcha/wine-quality-predictor\
-        or by, $ docker pull rahulgputcha/wine-quality-predictor\
+<ul>
+<li>NOTE-1: Training is conducted Manual way, using AWS EMR(Elastic Map Reduce setup).</li>
+<li>NOTE-2: Testing can be done either without (Manual way) or with using Docker.</li>
+<li>NOTE-3: Project files are hosted at Github, https://github.com/RPG-coder/WineQualityPrediction</li>
+<li>NOTE-4: Docker files are hosted at DockerHub, https://hub.docker.com/repository/docker/rahulgputcha/wine-quality-predictor</br>
+        or by, $ docker pull rahulgputcha/wine-quality-predictor</li>
+</ul>
 
 Following sections provides for step by step setup for the entire project:
 
 ------- Training only (START)---------------
 ### I. Setup (Setting EMR / Managed-Hadoop cluster on AWS)
-To achieve parallelism we require a method to access files in a distributed systems. Hence, to save the burden of setup AWS provides EMR Elastic Map Reduce and We opt to choose the variant Spark on Hadoop YARN. 
-Steps:
-1. Choose EMR AWS Service
-2. Click on Create a Cluster
-3. Fill in the details
-   i. Enter cluster name
-   ii. In Software configuration, Choose Spark: Spark 2.4.7 on Hadoop 2.10.1 YARN and Zeppelin 0.9.0
-   iii. In Hardware configuration, Choose m5.xlarge and set number of instances to 4 instances
-4. Select a Key-pair and Click on `Create`.
+<p>To achieve parallelism we require a method to access files in a distributed systems. Hence, to save the burden of setup AWS provides EMR Elastic Map Reduce and We opt to choose the variant Spark on Hadoop YARN. </p>
+<ol>Steps:
+<li> Choose EMR AWS Service</li>
+<li> Click on Create a Cluster<li>
+<li> Fill in the details:<br/>
+   i. Enter cluster name<br/>
+   ii. In Software configuration, Choose Spark: Spark 2.4.7 on Hadoop 2.10.1 YARN and Zeppelin 0.9.0<br/>
+   iii. In Hardware configuration, Choose m5.xlarge and set number of instances to 4 instances<br/>
+</li>
+<li> Select a Key-pair and Click on `Create`</li>
+</ol>
 
 
 ### II. Create S3 bucket 
