@@ -3,11 +3,11 @@ NJIT-ID: 31524074
 
 ## Installation steps
 
-NOTE-1: Training is conducted Manual way, using AWS EMR(Elastic Map Reduce setup).
-NOTE-2: Testing can be done either without (Manual way) or with using Docker.
-NOTE-3: Project files are hosted at Github, https://github.com/RPG-coder/WineQualityPrediction
-NOTE-4: Docker files are hosted at DockerHub, https://hub.docker.com/repository/docker/rahulgputcha/wine-quality-predictor
-        or by, $ docker pull rahulgputcha/wine-quality-predictor
+NOTE-1: Training is conducted Manual way, using AWS EMR(Elastic Map Reduce setup).\
+NOTE-2: Testing can be done either without (Manual way) or with using Docker.\
+NOTE-3: Project files are hosted at Github, https://github.com/RPG-coder/WineQualityPrediction\
+NOTE-4: Docker files are hosted at DockerHub, https://hub.docker.com/repository/docker/rahulgputcha/wine-quality-predictor\
+        or by, $ docker pull rahulgputcha/wine-quality-predictor\
 
 Following sections provides for step by step setup for the entire project:
 
